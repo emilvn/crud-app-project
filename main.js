@@ -8,7 +8,7 @@ async function main() {
     const DataURL = "test.json";
     try {
         const items = await getData(DataURL);
-        displayAllItems(items);
+        displayAllItems(items); 
     }
     catch (err) {
         throw new Error(`Error at main: ${err}`);
@@ -18,7 +18,7 @@ async function main() {
 /* ========== CREATE ========== */
 async function addData(dbURL, data) {
     try {
-        const response = await fetch(dbURL + "/create", {
+        const response = await fetch(dbURL, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)
@@ -53,7 +53,7 @@ async function getData(dbURL) {
 /* ========== UPDATE ========== */
 async function updateData(dbURL, updatedData) {
     try {
-        const response = await fetch(dbURL + "/update/" + updatedData.id, {
+        const response = await fetch(dbURL +"/"+ updatedData.id, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -74,7 +74,7 @@ async function updateData(dbURL, updatedData) {
 /* ========== DELETE ========== */
 async function deleteData(dbURL, dataID) {
     try {
-        const response = await fetch(dbURL + "/delete/" + dataID, {
+        const response = await fetch(dbURL + "/" + dataID, {
             method: "DELETE",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
